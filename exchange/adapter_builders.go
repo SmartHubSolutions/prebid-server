@@ -48,7 +48,7 @@ import (
 	"github.com/prebid/prebid-server/adapters/decenterads"
 	"github.com/prebid/prebid-server/adapters/deepintent"
 	"github.com/prebid/prebid-server/adapters/dmx"
-	"github.com/prebid/prebid-server/adapters/e_volution"
+	evolution "github.com/prebid/prebid-server/adapters/e_volution"
 	"github.com/prebid/prebid-server/adapters/emx_digital"
 	"github.com/prebid/prebid-server/adapters/engagebdr"
 	"github.com/prebid/prebid-server/adapters/eplanning"
@@ -90,11 +90,12 @@ import (
 	"github.com/prebid/prebid-server/adapters/rhythmone"
 	"github.com/prebid/prebid-server/adapters/rtbhouse"
 	"github.com/prebid/prebid-server/adapters/rubicon"
-	"github.com/prebid/prebid-server/adapters/sa_lunamedia"
+	salunamedia "github.com/prebid/prebid-server/adapters/sa_lunamedia"
 	"github.com/prebid/prebid-server/adapters/sharethrough"
 	"github.com/prebid/prebid-server/adapters/silvermob"
 	"github.com/prebid/prebid-server/adapters/smaato"
 	"github.com/prebid/prebid-server/adapters/smartadserver"
+	"github.com/prebid/prebid-server/adapters/smarthub"
 	"github.com/prebid/prebid-server/adapters/smartrtb"
 	"github.com/prebid/prebid-server/adapters/smartyads"
 	"github.com/prebid/prebid-server/adapters/smilewanted"
@@ -220,6 +221,7 @@ func newAdapterBuilders() map[openrtb_ext.BidderName]adapters.Builder {
 		openrtb_ext.BidderSilverMob:         silvermob.Builder,
 		openrtb_ext.BidderSmaato:            smaato.Builder,
 		openrtb_ext.BidderSmartAdserver:     smartadserver.Builder,
+		openrtb_ext.BidderSmartHub:          smarthub.Builder,
 		openrtb_ext.BidderSmartRTB:          smartrtb.Builder,
 		openrtb_ext.BidderSmartyAds:         smartyads.Builder,
 		openrtb_ext.BidderSmileWanted:       smilewanted.Builder,

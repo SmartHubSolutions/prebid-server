@@ -144,7 +144,7 @@ func (a *SmartHubAdapter) MakeBids(
 
 	if len(bidResp.SeatBid) == 0 {
 		return nil, []error{&errortypes.BadServerResponse{
-			Message: "Empty SeatBid",
+			Message: "Array SeatBid cannot be empty",
 		}}
 	}
 
@@ -154,7 +154,7 @@ func (a *SmartHubAdapter) MakeBids(
 
 	if len(bids) == 0 {
 		return nil, []error{&errortypes.BadServerResponse{
-			Message: "Empty SeatBid.Bids",
+			Message: "Array SeatBid[0].Bid cannot be empty",
 		}}
 	}
 

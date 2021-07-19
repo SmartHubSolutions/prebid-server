@@ -97,7 +97,12 @@
         "body": {
           "id": "a1580f2f-be6d-11eb-a150-d094662c1c35",
           "bidid": "359da97d0384d8a14767029c18fd840d",
-          "seatbid": [],
+          "seatbid": [
+            {
+              "bid": [],
+              "seat": "seat"
+            }
+          ],
           "cur": "USD"
         }
       }
@@ -105,7 +110,7 @@
   ],
   "expectedMakeBidsErrors": [
     {
-      "value": "Array SeatBid cannot be empty",
+      "value": "Array SeatBid[0].Bid cannot be empty",
       "comparison": "literal"
     }
   ],

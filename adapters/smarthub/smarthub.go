@@ -165,7 +165,7 @@ func (a *SmartHubAdapter) MakeBids(
 
 	if err := json.Unmarshal(bid.Ext, &bidExt); err != nil {
 		return nil, []error{&errortypes.BadServerResponse{
-			Message: "Missing BidExt",
+			Message: "Field BidExt is required",
 		}}
 	}
 

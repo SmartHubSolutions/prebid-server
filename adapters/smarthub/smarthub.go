@@ -39,8 +39,30 @@ func Builder(bidderName openrtb_ext.BidderName, config config.Adapter) (adapters
 	return bidder, nil
 }
 
+func (a *SmartHubAdapter) getImpressionExt(imp *openrtb2.Imp) (*openrtb_ext.ExtSmartHub, error) {
+	var bidderExt adapters.ExtImpBidder
+	if err := json.Unmarshal(imp.Ext, &bidderExt); err != nil {
+		return nil, &errortypes.BadInput{
+			Message: "Bidder extension not provided or can't be unmarshalled",
+		}
+	}
+
+	var smarthubExt openrtb_ext.ExtSmartHub
+	if err := json.Unmarshal(bidderExt.Bidder, &smarthubExt); err != nil {
+		return nil, &errortypes.BadInput{
+			Message: "Error while unmarshaling bidder extension",
+		}
+	}
+
+	return &smarthubExt, nil
+}
+
 func (a *SmartHubAdapter) buildEndpointURL(params *openrtb_ext.ExtSmartHub) (string, error) {
-	endpointParams := macros.EndpointTemplateParams{Host: params.Host, AccountID: params.Seat, SourceId: params.Token}
+	endpointParams := macros.EndpointTemplateParams{
+		Host:      params.Host,
+		AccountID: params.Seat,
+		SourceId:  params.Token,
+	}
 	return macros.ResolveMacros(a.endpoint, endpointParams)
 }
 
@@ -51,14 +73,22 @@ func (a *SmartHubAdapter) MakeRequests(
 	requestsToBidder []*adapters.RequestData,
 	errs []error,
 ) {
-	var smarthubExt *openrtb_ext.ExtSmartHub
+	if len(openRTBRequest.Imp) == 0 {
+		return nil, []error{&errortypes.BadInput{Message: "Missing Imp object"}}
+	}
 
-	reqJSON, err := json.Marshal(openRTBRequest)
+	var smarthubExt *openrtb_ext.ExtSmartHub
+	smarthubExt, err := a.getImpressionExt(&(openRTBRequest.Imp[0]))
 	if err != nil {
 		return nil, []error{err}
 	}
 
 	url, err := a.buildEndpointURL(smarthubExt)
+	if err != nil {
+		return nil, []error{err}
+	}
+
+	reqJSON, err := json.Marshal(openRTBRequest)
 	if err != nil {
 		return nil, []error{err}
 	}

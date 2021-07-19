@@ -13,7 +13,7 @@
         },
         "ext": {
           "bidder": {
-            "host": "example.com",
+            "host": "smarthub.test",
             "seat": "9Q20EdGxzgWdfPYShScl",
             "token": "zpl5iB5Ugpe9ofVTzi44WzfjZZYq1yer"
           }
@@ -46,7 +46,7 @@
   "httpCalls": [
     {
       "expectedRequest": {
-        "uri": "http://example.com/?seat=9Q20EdGxzgWdfPYShScl&token=zpl5iB5Ugpe9ofVTzi44WzfjZZYq1yer",
+        "uri": "http://smarthub.test/?seat=9Q20EdGxzgWdfPYShScl&token=zpl5iB5Ugpe9ofVTzi44WzfjZZYq1yer",
         "body": {
           "id": "id",
           "imp": [
@@ -61,7 +61,7 @@
               },
               "ext": {
                 "bidder": {
-                  "host": "example.com",
+                  "host": "smarthub.test",
                   "seat": "9Q20EdGxzgWdfPYShScl",
                   "token": "zpl5iB5Ugpe9ofVTzi44WzfjZZYq1yer"
                 }

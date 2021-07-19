@@ -8,7 +8,7 @@ import (
 )
 
 var validParams = []string{
-	`{"host":"example.com", "seat":"9Q20EdGxzgWdfPYShScl", "token":"eKmw6alpP3zWQhRCe3flOpz0wpuwRFjW"}`,
+	`{"host":"smarthub.test", "seat":"9Q20EdGxzgWdfPYShScl", "token":"eKmw6alpP3zWQhRCe3flOpz0wpuwRFjW"}`,
 }
 
 func TestValidParams(t *testing.T) {
@@ -32,12 +32,12 @@ var invalidParams = []string{
 	`[]`,
 	`{}`,
 	`{"anyparam": "anyvalue"}`,
-	`{"host":"example.com"}`,
+	`{"host":"smarthub.test"}`,
 	`{"seat":"9Q20EdGxzgWdfPYShScl"}`,
 	`{"token":"Y9Evrh40ejsrCR4EtidUt1cSxhJsz8X1"}`,
 	`{"seat":"9Q20EdGxzgWdfPYShScl", "token":"alNYtemWggraDVbhJrsOs9pXc3Eld32E"}`,
-	`{"host":"example.com", "token":"LNywdP2ebX5iETF8gvBeEoB6Cam64eeq"}`,
-	`{"host":"example.com", "seat":"9Q20EdGxzgWdfPYShScl"}`,
+	`{"host":"smarthub.test", "token":"LNywdP2ebX5iETF8gvBeEoB6Cam64eeq"}`,
+	`{"host":"smarthub.test", "seat":"9Q20EdGxzgWdfPYShScl"}`,
 }
 
 func TestInvalidParams(t *testing.T) {

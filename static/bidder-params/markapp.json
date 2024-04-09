@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "SmartHub Adapter Params",
-  "description": "A schema which validates params accepted by the SmartHub adapter",
+  "title": "Markapp Adapter Params",
+  "description": "A schema which validates params accepted by the Markapp adapter",
   "type": "object",
   "properties": {
     "seat": {

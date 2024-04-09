@@ -134,6 +134,7 @@ func (a *adapter) MakeBids(
 
 	responseBody := bidderRawResponse.Body
 	var bidResp openrtb2.BidResponse
+	// var impMap = make(map[string]openrtb2.Imp)
 	if err := json.Unmarshal(responseBody, &bidResp); err != nil {
 		return nil, []error{err}
 	}
@@ -176,6 +177,23 @@ func (a *adapter) MakeBids(
 		BidType: bidType,
 	})
 	return bidResponse, nil
+}
+
+func isMultiFormatImp(imp *openrtb2.Imp) bool {
+	count := 0
+	if imp.Video != nil {
+		count++
+	}
+	if imp.Audio != nil {
+		count++
+	}
+	if imp.Banner != nil {
+		count++
+	}
+	if imp.Native != nil {
+		count++
+	}
+	return count > 1
 }
 
 func getBidType(ext bidExt) (openrtb_ext.BidType, error) {

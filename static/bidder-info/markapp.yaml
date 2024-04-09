@@ -1,0 +1,2 @@
+endpoint: "http://markapp-prebid.smart-hub.io/pserver/?seat={{.AccountID}}&token={{.SourceId}}"
+aliasOf: "smarthub"
